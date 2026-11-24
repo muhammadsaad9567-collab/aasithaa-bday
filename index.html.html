@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#211638" />
+  <title>Happy Birthday, Asithaaa! 🎉</title>
+  <style>
+    :root {
+      --night: #171229;
+      --plum: #30204a;
+      --pink: #ff9bcf;
+      --peach: #ffd3a5;
+      --lavender: #d9c5ff;
+      --white: #fff9ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; overflow-x: hidden;
+      color: var(--white);
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, #68417f 0, transparent 28%),
+        radial-gradient(circle at 85% 75%, #57365f 0, transparent 30%),
+        linear-gradient(145deg, #171229, #2b1d43 55%, #171229);
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .5;
+      background-image: radial-gradient(#fff 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
+    .glow {
+      position: fixed; width: 260px; height: 260px; border-radius: 50%;
+      filter: blur(75px); opacity: .22; pointer-events: none;
+      background: #ff78bd; top: 10%; left: -100px;
+    }
+    .glow.two { background: #9c8aff; top: auto; left: auto; right: -100px; bottom: 5%; }
+    main {
+      min-height: 100svh; display: grid; place-items: center;
+      padding: 28px 16px; position: relative; z-index: 1;
+    }
+    .card {
+      width: min(100%, 680px); min-height: 470px; padding: clamp(26px, 6vw, 54px);
+      border: 1px solid rgba(255,255,255,.18); border-radius: 30px;
+      background: linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.055));
+      box-shadow: 0 25px 90px rgba(0,0,0,.3), inset 0 1px rgba(255,255,255,.12);
+      backdrop-filter: blur(16px); text-align: center; position: relative; overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .card::after {
+      content: ""; position: absolute; width: 220px; height: 220px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.08); top: -140px; right: -90px;
+      box-shadow: 0 0 0 24px rgba(255,255,255,.025), 0 0 0 48px rgba(255,255,255,.02);
+    }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: .22em; font-size: .72rem;
+      color: var(--peach); font-weight: 800; margin: 0 0 18px;
+    }
+    h1, h2 { line-height: 1.08; margin: 0; letter-spacing: -.04em; }
+    h1 { font-size: clamp(2.6rem, 9vw, 5.2rem); }
+    h2 { font-size: clamp(2rem, 7vw, 3.7rem); }
+    .gradient-text {
+      background: linear-gradient(90deg, #fff1bf, #ff9ed2, #cdb8ff);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .subtitle {
+      max-width: 470px; color: #eee3f5; font-size: clamp(1rem, 2.8vw, 1.15rem);
+      line-height: 1.7; margin: 20px auto 28px;
+    }
+    .emoji-row { font-size: clamp(2rem, 7vw, 3.2rem); margin-bottom: 22px; animation: bob 3s ease-in-out infinite; }
+    button {
+      border: 0; cursor: pointer; color: #291934; font-weight: 900; letter-spacing: .02em;
+      padding: 15px 25px; border-radius: 999px; font-size: 1rem;
+      background: linear-gradient(100deg, #ffe1a9, #ff9ed0 58%, #d6baff);
+      box-shadow: 0 10px 30px rgba(255,151,202,.22);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    button:hover { transform: translateY(-3px) scale(1.025); box-shadow: 0 15px 35px rgba(255,151,202,.34); }
+    button:active { transform: scale(.98); }
+    button:focus-visible, input:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+    .secondary {
+      color: #fff; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+      box-shadow: none; margin-top: 12px;
+    }
+    .hidden { display: none !important; }
+    .screen { width: 100%; animation: arrive .65s cubic-bezier(.2,.8,.2,1) both; }
+    .tiny-note { color: #cbbbd9; font-size: .82rem; margin-top: 20px; }
+    .divider { width: 70px; height: 3px; border-radius: 4px; background: linear-gradient(90deg, #ffd99f, #ff9dcc); margin: 23px auto; }
+    .message {
+      max-width: 490px; padding: 22px; margin: 8px auto 25px;
+      border-radius: 20px; background: rgba(20,13,35,.28);
+      border: 1px solid rgba(255,255,255,.12); color: #f6eefa; line-height: 1.8;
+    }
+    .pill {
+      display: inline-block; border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.1); border-radius: 99px; padding: 8px 13px;
+      color: #f6d6ed; font-size: .8rem; margin-bottom: 18px;
+    }
+    .age-input {
+      width: min(100%, 250px); padding: 15px 18px; border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.25); background: rgba(18,12,32,.45);
+      color: white; font-size: 1.1rem; text-align: center; margin: 8px 0 16px;
+    }
+    .age-input::placeholder { color: #c9bad6; }
+    .result {
+      margin: 20px auto 0; padding: 18px; max-width: 440px; border-radius: 18px;
+      background: rgba(255,255,255,.11); border: 1px solid rgba(255,255,255,.17);
+      line-height: 1.65; animation: arrive .45s ease both;
+    }
+    .music-toggle {
+      position: fixed; z-index: 5; top: 16px; right: 16px; border-radius: 99px;
+      padding: 10px 14px; font-size: .82rem; color: white;
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+      box-shadow: none; backdrop-filter: blur(10px);
+    }
+    .progress { display: flex; gap: 7px; margin: 0 auto 25px; }
+    .progress span { height: 5px; width: 25px; border-radius: 9px; background: rgba(255,255,255,.2); }
+    .progress span.on { background: linear-gradient(90deg, #ffd99f, #ff9dcc); }
+    .balloon {
+      position: fixed; bottom: -130px; z-index: 0; font-size: 42px;
+      animation: floatUp linear forwards; pointer-events: none;
+    }
+    .confetti {
+      position: fixed; top: -15px; z-index: 8; width: 9px; height: 14px;
+      pointer-events: none; animation: fall linear forwards;
+    }
+    @keyframes arrive { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes bob { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-9px) rotate(2deg); } }
+    @keyframes floatUp { to { transform: translateY(-125vh) rotate(18deg); opacity: 0; } }
+    @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: .2; } }
+    @media (max-width: 480px) {
+      .card { min-height: 510px; border-radius: 24px; padding: 28px 20px; }
+      .music-toggle { top: 10px; right: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div><div class="glow two"></div>
+  <button class="music-toggle" id="musicButton" aria-label="Turn background music on or off">♫ Music: off</button>
+  <main>
+    <section class="card" aria-live="polite">
+      <div class="screen" id="screen1">
+        <div class="emoji-row">🎈 ✨ 🎂 ✨ 🎈</div>
+        <p class="eyebrow">A very important announcement</p>
+        <h1 class="gradient-text">ASITHAAA!</h1>
+        <p class="subtitle">Well, well, well... look who's having a birthday today. 👀</p>
+        <button onclick="startExperience()">OPEN YOUR SURPRISE ✨</button>
+        <p class="tiny-note">Made especially for you, from India to UAE 💌</p>
+      </div>
+
+      <div class="screen hidden" id="screen2">
+        <div class="progress"><span class="on"></span><span></span><span></span></div>
+        <div class="emoji-row">🥳 🎊 🪩</div>
+        <p class="eyebrow">Breaking news</p>
+        <h2 class="gradient-text">IT'S YOUR DAY!!</h2>
+        <div class="divider"></div>
+        <p class="subtitle">Official permission granted to eat cake, be celebrated, ignore responsibilities for a bit and act like the main character.</p>
+        <button onclick="nextScreen(3)">OKAY, WHAT ELSE? →</button>
+      </div>
+
+      <div class="screen hidden" id="screen3">
+        <div class="progress"><span class="on"></span><span class="on"></span><span></span></div>
+        <div class="emoji-row">💗 🫶 ✨</div>
+        <p class="eyebrow">A message from your cousin</p>
+        <h2 class="gradient-text">A little appreciation</h2>
+        <div class="divider"></div>
+        <div class="message">
+          Happy birthday, Asithaaa! ❤️<br>
+          Hope your day is full of happiness, good food, lots of laughs and all the things you love. Sending you the biggest birthday wishes all the way from India. Have the best one! 🥳
+        </div>
+        <button onclick="nextScreen(4)">ONE LAST THING... 👀</button>
+      </div>
+
+      <div class="screen hidden" id="screen4">
+        <div class="progress"><span class="on"></span><span class="on"></span><span class="on"></span></div>
+        <div class="emoji-row">🕵️‍♀️ 🎂 🔐</div>
+        <p class="eyebrow">A totally normal question</p>
+        <h2 class="gradient-text">Care to reveal your age?</h2>
+        <p class="subtitle">No pressure. This is a completely confidential cousin investigation. 👀</p>
+        <button onclick="showAgeForm()">REVEAL YOUR AGE</button>
+        <div id="ageForm" class="hidden" style="margin-top:20px;">
+          <label for="age" class="tiny-note" style="display:block;margin:0 0 8px;">Go on then... how many candles? 🕯️</label>
+          <input class="age-input" id="age" type="number" min="1" max="120" placeholder="Your age..." inputmode="numeric" />
+          <br><button onclick="submitAge()">SUBMIT 🤭</button>
+          <div id="ageResult" class="result hidden"></div>
+        </div>
+        <p class="tiny-note">Your answer will be treated with absolutely no maturity whatsoever.</p>
+        <button class="secondary" onclick="restart()">Replay the surprise ↻</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    let audioContext = null;
+    let musicTimer = null;
+    let musicOn = false;
+    let noteIndex = 0;
+
+    function showScreen(number) {
+      document.querySelectorAll('.screen').forEach(el => el.classList.add('hidden'));
+      const target = document.getElementById('screen' + number);
+      target.classList.remove('hidden');
+      target.style.animation = 'none';
+      void target.offsetWidth;
+      target.style.animation = '';
+    }
+    function startExperience() {
+      showScreen(2);
+      confettiBurst();
+      balloonBurst();
+    }
+    function nextScreen(number) {
+      showScreen(number);
+      if (number === 4) confettiBurst();
+    }
+    function restart() {
+      document.getElementById('ageForm').classList.add('hidden');
+      document.getElementById('ageResult').classList.add('hidden');
+      document.getElementById('age').value = '';
+      showScreen(1);
+    }
+    function showAgeForm() {
+      document.getElementById('ageForm').classList.remove('hidden');
+      document.getElementById('age').focus();
+    }
+    function submitAge() {
+      const input = document.getElementById('age');
+      const result = document.getElementById('ageResult');
+      const age = Number(input.value);
+      if (!Number.isInteger(age) || age < 1 || age > 120) {
+        result.textContent = "Nice try 😂 Enter a real age, detective!";
+        result.classList.remove('hidden');
+        return;
+      }
+      const replies = [
+        "Interesting... we'll pretend we didn't see that. 🤐",
+        "Age successfully recorded. This information may or may not be used for cousin blackmail. 😂",
+        "A number? On this birthday? Very brave of you. 🎂",
+        "Noted. You are now officially one year more iconic. ✨"
+      ];
+      result.innerHTML = "<strong>CASE CLOSED. 🔎</strong><br>" + replies[Math.floor(Math.random() * replies.length)] + "<br><span style='color:#ffd9a8'>Happy birthday once again, Asithaaa! 💗</span>";
+      result.classList.remove('hidden');
+      confettiBurst();
+    }
+    function confettiBurst() {
+      const colors = ['#ff9bcf', '#ffd3a5', '#d9c5ff', '#fff0a8', '#a8e6cf'];
+      for (let i = 0; i < 95; i++) {
+        const piece = document.createElement('i');
+        piece.className = 'confetti';
+        piece.style.left = Math.random() * 100 + 'vw';
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.borderRadius = Math.random() > .5 ? '50%' : '2px';
+        piece.style.animationDuration = (2.2 + Math.random() * 2.5) + 's';
+        piece.style.animationDelay = (Math.random() * .45) + 's';
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 5500);
+      }
+    }
+    function balloonBurst() {
+      const balloons = ['🎈', '🎈', '🎉', '💖', '✨'];
+      for (let i = 0; i < 13; i++) {
+        const balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        balloon.textContent = balloons[Math.floor(Math.random() * balloons.length)];
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.animationDuration = (5 + Math.random() * 5) + 's';
+        balloon.style.animationDelay = (Math.random() * 1.5) + 's';
+        document.body.appendChild(balloon);
+        setTimeout(() => balloon.remove(), 11500);
+      }
+    }
+
+    // A tiny original, synthesized feel-good melody. It starts only after the visitor taps the music button.
+    const melody = [523.25, 659.25, 783.99, 659.25, 587.33, 698.46, 880, 698.46];
+    function playNote() {
+      if (!audioContext || !musicOn) return;
+      const now = audioContext.currentTime;
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      oscillator.type = 'sine';
+      oscillator.frequency.value = melody[noteIndex % melody.length];
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.055, now + 0.06);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.48);
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+      oscillator.start(now);
+      oscillator.stop(now + 0.5);
+      noteIndex++;
+    }
+    async function toggleMusic() {
+      const button = document.getElementById('musicButton');
+      if (!audioContext) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) {
+          button.textContent = '♫ Music unavailable';
+          return;
+        }
+        audioContext = new AudioContextClass();
+      }
+      if (audioContext.state === 'suspended') await audioContext.resume();
+      musicOn = !musicOn;
+      if (musicOn) {
+        playNote();
+        musicTimer = setInterval(playNote, 520);
+        button.textContent = '♫ Music: on';
+      } else {
+        clearInterval(musicTimer);
+        button.textContent = '♫ Music: off';
+      }
+    }
+    document.getElementById('musicButton').addEventListener('click', toggleMusic);
+    document.getElementById('age').addEventListener('keydown', e => {
+      if (e.key === 'Enter') submitAge();
+    });
+  </script>
+</body>
+</html>
